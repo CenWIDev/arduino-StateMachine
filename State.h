@@ -4,6 +4,8 @@
 
 #include "Transition.h"
 
+#include "Options.h"
+
 #define MAX_TRANSITIONS 5
 
 typedef void (*StateFn)();

@@ -4,6 +4,8 @@
 
 #include "State.h"
 
+#include "Options.h"
+
 #define MAX_STATES 5
 
 class StateMachine {

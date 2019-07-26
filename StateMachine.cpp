@@ -12,17 +12,20 @@ StateMachine::~StateMachine() {
 
 void StateMachine::AddState(String stateName, const StateFn f) {
   if(_nStates >= MAX_STATES) {
-    Error("Attempting to add more than MAX_STATES to the state machine");
+    if(uselog)
+      Error("Attempting to add more than MAX_STATES to the state machine");
     return;
   }
-  
-  Trace("Add state :: " + stateName);
+
+  if(useLog)
+    Trace("Add state :: " + stateName);
   _states[_nStates] = new State(stateName, f);
   _nStates++;
 }
 
 void StateMachine::SetCurrentState(State* s) {
-  Trace("Set current state :: " + s->Name());
+  if(useLog)
+    Trace("Set current state :: " + s->Name());
   _currentState = s;
   _stateLastUpdated = millis();
 }

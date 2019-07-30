@@ -1,16 +1,13 @@
 class Transition:
-    #typedef bool (*TransitionFn)()
+    TransitionFn = None
     _to = ""
-    #add TransitionFn
 
-    def __init__(self, to):#add TransitionFn here
+    def __init__(self, to, TransitionFn):
         self._to = to
-        #self._f = _f
-
-    def __del__(self):
+        self.TransitionFn = TransitionFn
 
     def ShouldTransition(self):
-        shouldTransition = false #needs to be _f() for assignment
+        shouldTransition = TransitionFn()
         return shouldTransition
 
     def To(self):

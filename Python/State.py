@@ -1,17 +1,17 @@
 class State:
-    #typedef void (*StateFn)()
-    #_f = StateFn()     (or something)
+    StateFn = None
     _stateName = ""
     _transitions = []
     
-    def __init__(self, stateName):#Need to add stateFn
+    def __init__(self, stateName, StateFn):#Need to add stateFn
         self._stateName = stateName
+        self.StateFn = StateFn
         
     def __del__(self):
         ClearTransitions()
         
     def ClearTransitions(self):
-        for i in range(len(self._transitions)-1):
+        for i in range(len(self._transitions)):
             del self._transitions[i]
 
     def AddTransition(self, to):#Need to add TransitionFn
@@ -23,9 +23,16 @@ class State:
     def Name(self):
         return self._stateName
 
-    #add RunState()
+    def RunState(self):
+        if(StateFn != None):
+            StateFn()
 
-    #add GetNextState()
+    def GetNextState(self):
+        for i in range(len(self._transitions)):
+            t = self._transitions[i]
+            if(t.ShouldTransition()):
+                return t.To()
+        
         
         
         

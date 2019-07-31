@@ -5,7 +5,7 @@ class State:
     _stateName = ""
     _transitions = []
     
-    def __init__(self, stateName, StateFn):#Need to add stateFn
+    def __init__(self, stateName, StateFn):
         self._stateName = stateName
         self.StateFn = StateFn
         
@@ -16,8 +16,8 @@ class State:
         for i in range(len(self._transitions)):
             del self._transitions[i]
 
-    def AddTransition(self, to):
-        self._transitions.append(Transition(to))
+    def AddTransition(self, to, TransitionFn):
+        self._transitions.append(Transition(to, TransitionFn))
 
     def Is(self, stateName):
         return self._stateName == stateName

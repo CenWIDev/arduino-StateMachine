@@ -1,10 +1,11 @@
 from State import State
+from time import time
 
 class StateMachine:
     _nStates = 0
     _states = []
     _currentState = None
-    _StateLastUpdated = 0
+    _stateLastUpdated = 0.0
 
     def __del__(self):
         ClearStates()
@@ -14,26 +15,28 @@ class StateMachine:
 
     def SetCurrentState(self, newState):
         self._currentState = newState
-        #_stateLastUpdated =        Need to implement this
+        self._stateLastUpdated = time()
+        print("Just changed to state: " + self._currentState.Name())
 
     #def SetCurrentState(stateName):
 
-    def GetStateByName(stateName):
+    def GetStateByName(self, stateName):
         for s in self._states:
             if(s.Is(stateName)):
                 return s
         return None
 
-    def ClearStates():
+    def ClearStates(self):
         for i in range(len(_states)):
             del self._states[i]
 
-    def RunCurrentState():
+    def RunCurrentState(self):
         if(self._currentState == None):
             return
         self._currentState.RunState()
 
-    def GetNextState():
+    def GetNextState(self):
+        #print("as of StateMacine.GetNextState(), _currentState = " + self._currentState.Name())
         if(self._currentState == None):
             return
         return self._currentState.GetNextState()
@@ -41,14 +44,14 @@ class StateMachine:
     def AddTransition(self, stateFrom, stateTo, TransitionFn):
         if(stateFrom == "*"):
             return AddTransitionToAll(stateTo, TransitionFn)
-        s = GetStateByName(stateFrom)
+        s = self.GetStateByName(stateFrom)
         if(s != None):
             s.AddTransition(stateTo, TransitionFn)
 
     def AddTransitionToAll(self, stateTo, TransitionFn):
         for s in self._states:
-            if(s!=None): # and !s.Is(stateTo)
+            if(s!=None and not s.Is(stateTo)):
                 s.AddTransition(stateTo, TransitionFn)
 
-    #def TimoutSinceLastTransition(t)
-                #return (time-_stateLastUpdated)>t
+    def TimoutSinceLastTransition(self, t):
+        return (time() - self._stateLastUpdated)>t

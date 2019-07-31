@@ -7,7 +7,7 @@ class Transition:
         self.TransitionFn = TransitionFn
 
     def ShouldTransition(self):
-        shouldTransition = TransitionFn()
+        shouldTransition = self.TransitionFn()
         return shouldTransition
 
     def To(self):

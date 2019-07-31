@@ -1,3 +1,5 @@
+from Transition import Transition
+
 class State:
     StateFn = None
     _stateName = ""
@@ -14,8 +16,8 @@ class State:
         for i in range(len(self._transitions)):
             del self._transitions[i]
 
-    def AddTransition(self, to):#Need to add TransitionFn
-        self._transitions.append(Transition(to))#finish Transition here
+    def AddTransition(self, to):
+        self._transitions.append(Transition(to))
 
     def Is(self, stateName):
         return self._stateName == stateName
@@ -24,8 +26,8 @@ class State:
         return self._stateName
 
     def RunState(self):
-        if(StateFn != None):
-            StateFn()
+        if(self.StateFn != None):
+            self.StateFn()
 
     def GetNextState(self):
         for i in range(len(self._transitions)):

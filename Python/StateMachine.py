@@ -1,3 +1,5 @@
+from State import State
+
 class StateMachine:
     _nStates = 0
     _states = []
@@ -8,33 +10,33 @@ class StateMachine:
         ClearStates()
 
     def AddState(self, stateName, StateFn):
-        _states.append(State(stateName, StateFn))
+        self._states.append(State(stateName, StateFn))
 
     def SetCurrentState(self, newState):
-        _currentState = newState
+        self._currentState = newState
         #_stateLastUpdated =        Need to implement this
 
     #def SetCurrentState(stateName):
 
     def GetStateByName(stateName):
-        for s in _states:
+        for s in self._states:
             if(s.Is(stateName)):
                 return s
         return None
 
     def ClearStates():
         for i in range(len(_states)):
-            del _states[i]
+            del self._states[i]
 
     def RunCurrentState():
-        if(_currentState == None):
+        if(self._currentState == None):
             return
-        _currentState.RunState()
+        self._currentState.RunState()
 
     def GetNextState():
-        if(_currentState == None):
+        if(self._currentState == None):
             return
-        return _currentState.GetNextState()
+        return self._currentState.GetNextState()
 
     def AddTransition(self, stateFrom, stateTo, TransitionFn):
         if(stateFrom == "*"):
@@ -44,7 +46,7 @@ class StateMachine:
             s.AddTransition(stateTo, TransitionFn)
 
     def AddTransitionToAll(self, stateTo, TransitionFn):
-        for s in _states:
+        for s in self._states:
             if(s!=None): # and !s.Is(stateTo)
                 s.AddTransition(stateTo, TransitionFn)
 

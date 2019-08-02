@@ -14,8 +14,8 @@ def StateTransitionCondition():
 
 sm.AddState("State1", State1Behavior)
 sm.AddState("State2", State2Behavior)
-sm.AddTransition("State2", "State1", StateTransitionCondition)
 sm.AddTransition("State1", "State2", StateTransitionCondition)
+sm.AddTransition("State2", "State1", StateTransitionCondition)
 
 sm.SetCurrentState(sm.GetStateByName("State1"))
 
@@ -24,8 +24,7 @@ print(len(sm._states[1]._transitions))
 
 while True:
     nextState = sm.GetNextState()
-    #print(nextState)
-    if(nextState != None):
+    if(nextState != None): # temp until GetNextState() in State is fixed
         sm.SetCurrentState(sm.GetStateByName(nextState))
     sm.RunCurrentState()
     time.sleep(.25)

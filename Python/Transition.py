@@ -1,6 +1,8 @@
 class Transition:
-    TransitionFn = None
-    _to = ""
+
+    def __init__():
+        self.TransitionFn = None
+        self._to = ""
 
     def __init__(self, to, TransitionFn):
         self._to = to

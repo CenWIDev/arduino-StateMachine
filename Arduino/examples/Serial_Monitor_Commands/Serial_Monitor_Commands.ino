@@ -2,6 +2,8 @@
 
 StateMachine sm;
 StateMachine commands;
+int yellowLight = LOW;
+int greenLight = LOW;
 
 String input;
 
@@ -108,16 +110,30 @@ void SetUpCommands()
 
   commands.AddState("printMessage", [] () {
     Serial.println("This is the message for the printMessage command");
+    if(greenLight == LOW){
+      greenLight = HIGH;
+    }
+    else{
+      greenLight = LOW;
+    }
+    digitalWrite(4, greenLight);
   });
 
   commands.AddTransition("*", "printMessage", []() -> bool {
 
-    return input.equals("printMessage");   
+    return input.equals("printMessage");
     
   });
 
   commands.AddState("printMessage2", [] () {
     Serial.println("This is the message for the printMessage2 command");
+    if(yellowLight == LOW){
+      yellowLight = HIGH;
+    }
+    else{
+      yellowLight = LOW;
+    }
+    digitalWrite(7, yellowLight);
   });
 
   commands.AddTransition("*", "printMessage2", []() -> bool {

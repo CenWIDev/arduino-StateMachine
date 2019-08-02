@@ -1,13 +1,11 @@
 from Transition import Transition
 
 class State:
-    StateFn = None
-    _stateName = ""
-    _transitions = []
     
     def __init__(self, stateName, StateFn):
         self._stateName = stateName
         self.StateFn = StateFn
+        self._transitions = []
         
     def __del__(self):
         ClearTransitions()
@@ -33,7 +31,10 @@ class State:
         for i in range(len(self._transitions)):
             t = self._transitions[i]
             if(t.ShouldTransition()):
+                #print("GetNextState() is returning a new state")
                 return t.To()
+        #If no transitions, next state is the current state
+        #return self._stateName
         
         
         

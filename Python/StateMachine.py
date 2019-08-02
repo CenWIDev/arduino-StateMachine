@@ -2,10 +2,12 @@ from State import State
 from time import time
 
 class StateMachine:
-    _nStates = 0
-    _states = []
-    _currentState = None
-    _stateLastUpdated = 0.0
+
+    def __init__(self):
+        self._nStates = 0
+        self._states = []
+        self._currentState = None
+        self._stateLastUpdated = 0.0
 
     def __del__(self):
         ClearStates()

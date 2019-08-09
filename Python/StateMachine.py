@@ -16,6 +16,8 @@ class StateMachine:
         self._states.append(State(stateName, StateFn))
 
     def SetCurrentState(self, newState):
+        if(newState == self._currentState):
+            return
         self._currentState = newState
         self._stateLastUpdated = time()
         print("Just changed to state: " + self._currentState.Name())
@@ -57,3 +59,4 @@ class StateMachine:
 
     def TimoutSinceLastTransition(self, t):
         return (time() - self._stateLastUpdated)>t
+        #return True

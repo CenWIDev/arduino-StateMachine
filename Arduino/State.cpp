@@ -14,11 +14,11 @@ State::~State() {
 
 void State::AddTransition(String to, TransitionFn f) {
   if(_numTransitions >= MAX_TRANSITIONS) {
-    if(useLog)
+    //if(useLog)
       Error("Attempting to add more than MAX_TRANSITIONS from a state");
     return;
   }
-  if(useLog)
+  //if(useLog)
    Trace("Add transition :: from: " + _stateName + " to: " + to);
   _transitions[_numTransitions] = new Transition(to, f);
   _numTransitions++;

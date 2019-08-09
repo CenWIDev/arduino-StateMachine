@@ -1,4 +1,5 @@
-#include <StateMachine.h>
+#include "StateMachine.h"
+#include "Log.h"
 
 StateMachine sm;
 StateMachine commands;
@@ -11,11 +12,11 @@ int executionCount = 0;
 
 void setup() {
 
+  DisableLog();
+
   Serial.begin(9600);
 
   sm.AddState("Message", [] () {
-
-    //This is where "State1"'s behavior code would go
 
     //Example: Print a line to the serial monitor
     Serial.println("Enter the information you would like printed:");

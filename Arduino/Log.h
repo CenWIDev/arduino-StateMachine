@@ -13,6 +13,7 @@ enum class LogLevel {
 static LogLevel log_level = LogLevel::info;
 
 static void Log(String message, LogLevel level=LogLevel::info) {
+  return;
   if(Serial && level <= log_level) Serial.println(message);
 }
 
@@ -30,6 +31,10 @@ static void Info(String message) {
 
 static void Trace(String message) {
   Log("TRACE: " + message, LogLevel::trace);
+}
+
+static void DisableLog(){
+  log_level = LogLevel::silent;  
 }
 
 static void EnableLog(int baud, LogLevel level=LogLevel::info) {

@@ -13,7 +13,7 @@ Transition::~Transition(){}
 bool Transition::ShouldTransition() {
   auto shouldTransition = _f();
 
-  if(shouldTransition && useLog)
+  if(shouldTransition /*&& useLog*/)
     Info("Transitioning to state: " + _to);
     
   return shouldTransition;

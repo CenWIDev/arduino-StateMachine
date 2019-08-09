@@ -1,3 +1,3 @@
 #pragma once
 
-bool useLog = true;
+static bool useLog = true;

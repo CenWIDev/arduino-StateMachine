@@ -34,7 +34,7 @@ class State:
                 #print("GetNextState() is returning a new state")
                 return t.To()
         #If no transitions, next state is the current state
-        #return self._stateName
+        return self._stateName
         
         
         

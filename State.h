@@ -1,10 +1,7 @@
 #pragma once
 
 #include "Arduino.h"
-
 #include "Transition.h"
-
-#include "Options.h"
 
 #define MAX_TRANSITIONS 5
 

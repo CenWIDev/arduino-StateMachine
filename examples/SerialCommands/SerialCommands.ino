@@ -1,5 +1,4 @@
 #include "StateMachine.h"
-#include "Log.h"
 
 StateMachine sm;
 StateMachine commands;
@@ -11,8 +10,6 @@ String input;
 int executionCount = 0;
 
 void setup() {
-
-  DisableLog();
 
   Serial.begin(9600);
 

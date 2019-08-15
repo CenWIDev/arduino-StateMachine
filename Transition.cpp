@@ -1,6 +1,4 @@
 #include "Arduino.h"
-
-#include "Log.h"
 #include "Transition.h"
 
 Transition::Transition(String to, TransitionFn f) {
@@ -13,9 +11,6 @@ Transition::~Transition(){}
 bool Transition::ShouldTransition() {
   auto shouldTransition = _f();
 
-  if(shouldTransition /*&& useLog*/)
-    Info("Transitioning to state: " + _to);
-    
   return shouldTransition;
 }
 

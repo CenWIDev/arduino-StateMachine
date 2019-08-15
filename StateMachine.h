@@ -1,10 +1,7 @@
 #pragma once
 
 #include "Arduino.h"
-
 #include "State.h"
-
-#include "Options.h"
 
 #define MAX_STATES 5
 

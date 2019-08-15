@@ -2,8 +2,6 @@
 
 #include "Arduino.h"
 
-#include "Options.h"
-
 typedef bool (*TransitionFn)();
 
 class Transition {
